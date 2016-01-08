@@ -22,7 +22,7 @@ This usage pattern shares the ADB server container's network with ADB client con
 Start the server:
 
 ```
-docker run -d --privileged -v /dev/bus/usb:/dev/bus/usb --name adbd sorccu/adb
+docker run --rm --privileged -v /dev/bus/usb:/dev/bus/usb --name adbd docker-adb
 ```
 
 Then on the same machine:

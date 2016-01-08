@@ -16,7 +16,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
       https://dl.google.com/android/android-sdk_r24.0.2-linux.tgz && \
     tar xzf /opt/adt.tgz -C /opt && \
     rm /opt/adt.tgz && \
-    echo y | /opt/android-sdk-linux/tools/android update sdk --filter platform-tools --no-ui --force && \
+    echo y | /opt/android-sdk-linux/tools/android update sdk -u -a -t 3 --force && \
     apt-get clean && \
     rm -rf /var/cache/apt/*
 
@@ -28,4 +28,4 @@ ENV PATH $PATH:/opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tool
 
 # Start the server by default. This needs to run in a shell or Ctrl+C won't
 # work.
-CMD adb -a -P 5037 fork-server server
+CMD adb -a -P 5037 start-server usb && sleep 600
